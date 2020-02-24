@@ -11,6 +11,8 @@ services:
       PORT: 8080
     deploy:
       labels:
+        - 'traefik.enable=true'
+        - 'traefik.backend=dashboard'
         #traefik.frontend.rule: Host:dashboard.${CLUSTER_DOMAIN}
         - 'traefik.frontend.rule=PathPrefixStrip:/dashboard;Host:${CLUSTER_DOMAIN}'   
         - 'traefik.port= 8080'
@@ -31,7 +33,7 @@ networks:
   admin-net:
     driver: overlay
   traefik-net:
-          external: true
+    external: true
       
 volumes:
   portainer: {}
