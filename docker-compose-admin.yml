@@ -12,7 +12,7 @@ services:
     deploy:
       labels:
         #traefik.frontend.rule: Host:dashboard.${CLUSTER_DOMAIN}
-        traefik.frontend.rule=Host:${CLUSTER_DOMAIN}; PathPrefixStrip: /dashboard    
+        traefik.frontend.rule= PathPrefixStrip:/dashboard;Host:${CLUSTER_DOMAIN}   
         traefik.port: 8080
         traefik.docker.network: traefik-net
       replicas: 1
@@ -36,8 +36,8 @@ services:
       - portainer:/data
     deploy:
       labels:
-       # traefik.frontend.rule: Host:portainer.${CLUSTER_DOMAIN}
-        traefik.frontend.rule=Host:${CLUSTER_DOMAIN}; PathPrefixStrip: /portainer traefik.frontend.rule=Host:${CLUSTER_DOMAIN}; PathPrefixStrip: /portainer
+        #traefik.frontend.rule: Host:portainer.${CLUSTER_DOMAIN}
+        traefik.frontend.rule: PathPrefixStrip:/portainer;Host:${CLUSTER_DOMAIN}
         traefik.port: 9000
         traefik.docker.network: traefik-net
       replicas: 1
