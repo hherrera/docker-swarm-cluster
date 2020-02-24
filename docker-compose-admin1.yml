@@ -26,3 +26,12 @@ services:
           memory: 64M
     networks:
       - traefik-net
+
+networks:
+  admin-net:
+    driver: overlay
+  traefik-net:
+          external: true
+      
+volumes:
+  portainer: {}
