@@ -10,5 +10,5 @@ echo "CREATING ADMINISTRATION SERVICES STACK..."
 export $(cat .env) && docker stack deploy --compose-file docker-compose-admin1.yml admin
 
 echo "CREATING METRICS SERVICES STACK..."
-#export $(cat .env) && docker stack deploy --compose-file docker-compose-metrics.yml metrics
+export $(cat .env) && docker stack deploy --compose-file docker-compose-metrics.yml metrics
 
