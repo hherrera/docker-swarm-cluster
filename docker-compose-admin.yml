@@ -27,11 +27,13 @@ services:
       - traefik-net
 
   portainer:
-    image: portainer/portainer:1.17.1
+    image: portainer/portainer
     command: -H tcp://tasks.agent:9001 --tlsskipverify
     ports:
       - 5050:9000
+      - 8000:8000
     volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
       - portainer:/data
     deploy:
       labels:
